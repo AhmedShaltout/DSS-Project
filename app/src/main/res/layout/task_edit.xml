@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/back"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Task_EditTask">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:divider="@drawable/divider"
+        android:showDividers="middle"
+        android:padding="20dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/taskEdit"
+            android:textSize="35sp"
+            android:gravity="center"
+            android:layout_marginBottom="50dp"
+            android:textColor="@color/greeny"
+            android:fontFamily="serif-monospace"
+            />
+
+        <EditText
+            android:id="@+id/edit_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/title"
+            android:textAlignment="center"
+            android:background="@drawable/rect_black"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:inputType="textCapSentences"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:textColorHighlight="@android:color/darker_gray"
+            >
+            <requestFocus/>
+        </EditText>
+
+
+        <EditText
+            android:id="@+id/edit_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:minHeight="200dp"
+            android:padding="7dp"
+            android:hint="@string/body"
+            android:textColor="@android:color/black"
+            android:textAlignment="gravity"
+
+            android:gravity="top"
+            android:background="@drawable/rect_black"
+            android:inputType="textMultiLine"  />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/rect_red"
+                android:textColor="@android:color/holo_red_dark"
+                android:text="@string/cancel"
+                android:onClick="Cancel"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/rect_green"
+                android:textColor="@android:color/holo_green_dark"
+                android:text="@string/save"
+                android:onClick="Save"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,11 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.desk.dss_project">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/_luncher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/_luncher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".User_Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".User_SignUp" />
+        <activity android:name=".Task_ToDoConnector" />
+        <activity android:name=".Task_AddTask" />
+        <activity android:name=".Task_Details" />
+        <activity android:name=".Task_EditTask" />
+        <activity android:name=".User_ForgetPassword"/>
+    </application>
+
 </manifest>

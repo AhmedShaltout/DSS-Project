@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragDone"
+    tools:context=".Task_Done">
+    <LinearLayout
+        android:id="@+id/doneView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/divider"
+        android:padding="10dp"
+        android:showDividers="middle"
+        android:orientation="vertical">
+    </LinearLayout>
+</ScrollView>

@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">DSS-Project</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="createAccount">Create New Account</string>
+    <string name="forgotPassword">Forgot Your Password?</string>
+    <string name="email">Email</string>
+    <string name="show_pwd">Show Password</string>
+    <!--<string name="action_settings">Settings</string>-->
+    <string name="add">Add Task</string>
+    <string name="title">Task Title</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="body">Task Details</string>
+    <string name="done">done</string>
+    <string name="taskDetails">Task Details</string>
+    <string name="taskEdit">Edit Task</string>
+    <string name="whatTo">What is next?</string>
+    <string name="signOut">Sign Out</string>
+    <string name="reset">Reset</string>
+    <string name="fillAll">Please fill all the data.</string>
+    <string name="addedSuccessfully">Added Successfully :)</string>
+    <string name="deleteConfirm">Are you sure to delete?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="resetMessage">A Message Was Sent Successfully to your Email Address</string>
+    <string name="doneDate">doneDate</string>
+    <string name="startDate">startDate</string>
+    <string name="dueDate">Due Date</string>
 </resources>
