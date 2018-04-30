@@ -21,25 +21,31 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Arrays;
 import java.util.Comparator;
 
+
 public class Task_Done extends Fragment {
 
-    private FirebaseAuth mAuth;
     private DatabaseReference myRef;
     private LinearLayout cont;
 
     public Task_Done() {
     }
 
-
+    /*
+    * when the fragment is created it calls the database to get all the done tasks
+    * and it sorts the tasks by done date, the way we show the content is very old,
+    * we create a linear layout, and inflate the task_done layout then add the task details
+    * and show it in the container doneView which in vertical LinearLayout and the parent is
+    * scroll view
+    * setting some listeners using setListeners function ( defined below ) to add functionality to
+     * the buttons ( eye, recycle )
+     * the result is all done tasks shown.
+     * */
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.task_done, container, false);
         cont = view.findViewById(R.id.doneView);
-        if(mAuth ==null)
-            mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase database = Utils.getDatabase();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        myRef = database.getReference(currentUser.getUid());
+        myRef = database.getReference(Utils.getAuth().getUid());
         myRef.orderByChild(getString(R.string.done)).equalTo(true)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -82,6 +88,10 @@ public class Task_Done extends Fragment {
         return view;
     }
 
+    /*
+    * is used to add onClickListener to every component in the view (delete and show)
+    * the parameter is layout ( row )
+    * the result is the listeners set to the buttons*/
     private void setListeners(final LinearLayout layout) {
         final Button delete = layout.findViewById(R.id.delete),
                 edit = layout.findViewById(R.id.edit),

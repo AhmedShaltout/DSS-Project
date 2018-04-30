@@ -22,7 +22,6 @@ import java.util.Date;
 
 public class Task_AddTask extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
     private DatabaseReference myRef;
     private Date dueDate;
 
@@ -31,11 +30,17 @@ public class Task_AddTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_add_task);
         FirebaseDatabase database = Utils.getDatabase();
-        if(mAuth == null)
-            mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        myRef = database.getReference(currentUser.getUid());
+        myRef = database.getReference(Utils.getAuth().getUid());
     }
+    /*
+    * Save is invoked when the user clicks add button in the add new task activity
+    * it does'nt specify any any parameters ( just the clicked view by default )
+    * the function is gonna check if the required fields are added or not
+    * in case they aren't added the colors of the layout will change and the user must enter them
+    * to save the task.
+    * in case they are added successfully the function is gonna push the task to firebase under the
+    * user id
+    */
     public void Save(View view){
         EditText titleField = findViewById(R.id.add_title), bodyField = findViewById(R.id.add_body);
         final String title = titleField.getText().toString(),
@@ -44,13 +49,13 @@ public class Task_AddTask extends AppCompatActivity {
         boolean titleLenZero = title.length() ==0, bodyLenZero = body.length() == 0 ;
         if( titleLenZero || bodyLenZero){
             if(titleLenZero)
-                setBackground(titleField,R.drawable.rect_red);
+                Utils.setBackground(titleField,R.drawable.rect_red);
             else
-                setBackground(titleField,R.drawable.rect_black);
+                Utils.setBackground(titleField,R.drawable.rect_black);
             if(bodyLenZero)
-                setBackground(bodyField,R.drawable.rect_red);
+                Utils.setBackground(bodyField,R.drawable.rect_red);
             else
-                setBackground(bodyField,R.drawable.rect_black);
+                Utils.setBackground(bodyField,R.drawable.rect_black);
             message = getString(R.string.fillAll);
         } else {
             Task task = new Task(title, dueDate, body);
@@ -60,10 +65,14 @@ public class Task_AddTask extends AppCompatActivity {
         }
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-    private void setBackground(View view, int resource){
-        view.setBackgroundResource(resource);
-    }
 
+    /*
+    * pickDate: is used to make due date by picking the date and the hour
+    * is called when you click the small calendar in the due date field
+    * parameters are the view ( by default )
+    * the result the user selects a date and or hour or ignore them and it will be shown in the due
+    * date.
+    * */
     public void pickDate(View view){
         final Calendar currentDate = Calendar.getInstance();
         final Calendar pickedDate = Calendar.getInstance();
@@ -83,6 +92,12 @@ public class Task_AddTask extends AppCompatActivity {
             }
         }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
     }
+
+    /*
+    * Cancel is called to finish the activity by calling onBackPressed
+    * parameters are the view clicked
+    * result the activity is terminated
+    * */
     public void Cancel(View view){
         onBackPressed();
     }

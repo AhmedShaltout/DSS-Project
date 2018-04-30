@@ -8,7 +8,7 @@
     android:gravity="center"
     android:divider="@drawable/divider"
     android:showDividers="middle"
-    android:padding="30dp"
+    android:padding="@dimen/login_padding"
     android:background="@color/back"
     tools:context=".User_Login">
 
@@ -23,10 +23,10 @@
         android:textColor="@android:color/black"
         android:textColorHint="@android:color/darker_gray"
         android:textColorHighlight="@android:color/darker_gray"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
+        android:paddingTop="@dimen/email_padding"
+        android:paddingBottom="@dimen/email_padding"
+        android:paddingRight="@dimen/email_padding_side"
+        android:paddingLeft="@dimen/email_padding_side"
         android:background="@drawable/rect_black" >
         <requestFocus/>
     </EditText>
@@ -34,7 +34,7 @@
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/email_height"
         android:hint="@string/password"
         android:textAlignment="center"
         android:fontFamily="serif"
@@ -42,18 +42,18 @@
         android:textColor="@android:color/black"
         android:textColorHint="@android:color/darker_gray"
         android:textColorHighlight="@android:color/darker_gray"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
+        android:paddingTop="@dimen/email_padding"
+        android:paddingBottom="@dimen/email_padding"
+        android:paddingRight="@dimen/email_padding_side"
+        android:paddingLeft="@dimen/email_padding_side"
         android:background="@drawable/rect_black" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forgotPassword"
-        android:textSize="17sp"
-        android:fontFamily="cursive"
+        android:textSize="@dimen/forgot_password"
+        android:fontFamily="serif"
         android:onClick="forgotPassword"
         />
 
@@ -63,13 +63,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rect_green"
-        android:fontFamily="cursive"
+        android:fontFamily="serif"
         android:onClick="login"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:paddingLeft="@dimen/login_padding"
+        android:paddingRight="@dimen/login_padding"
         android:text="@string/login"
         android:textAlignment="center"
-        android:textSize="25sp" />
+        android:textSize="@dimen/login_size" />
 
     <Button
         android:id="@+id/createAccount"
@@ -77,12 +77,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rect_green"
-        android:fontFamily="monospace"
+        android:fontFamily="serif"
         android:onClick="newAccount"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:paddingLeft="@dimen/login_padding"
+        android:paddingRight="@dimen/login_padding"
         android:text="@string/createAccount"
         android:textAlignment="center"
-        android:textSize="20sp" />
+        android:textSize="@dimen/login_size" />
 
 </LinearLayout>

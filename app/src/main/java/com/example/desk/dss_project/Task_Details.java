@@ -5,27 +5,24 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
+/*
+* this activity is created when the user clicks on the eye button to show the task details
+* the activity calls the database to get the data of the task with id ( id )
+* the result is the data of the task shown on the screen
+* */
 public class Task_Details extends AppCompatActivity {
 
-
-    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_details);
-        if(mAuth == null)
-            mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase database = Utils.getDatabase();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        database.getReference(currentUser.getUid()+"/"+ Task_ToDo.editThis).addValueEventListener(new ValueEventListener() {
+        database.getReference(Utils.getAuth().getUid()+"/"+ Task_ToDo.editThis).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChildren()) {

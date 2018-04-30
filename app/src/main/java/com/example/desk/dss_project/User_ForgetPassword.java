@@ -20,40 +20,41 @@ public class User_ForgetPassword extends AppCompatActivity {
         setContentView(R.layout.user_forget_password);
     }
 
+    /*
+    * this function is invoked to see if the email is a user or not in our system and sends a reset
+    * email to his email.
+    * the parameter is the view clicked
+    * the result is the email field changes to read if it is empty or not a user email
+    * or it will send a reset message to the email.
+    */
     public void reset(View view) {
         final EditText emailField = findViewById(R.id.email);
         String email= emailField.getText().toString();
-        boolean isEmail = isValidEmail(email);
+        boolean isEmail = Utils.isValidEmail(email);
         if(!isEmail)
-            setBackground(emailField, R.drawable.rect_red);
+            Utils.setBackground(emailField, R.drawable.rect_red);
         else{
-            setBackground(emailField, R.drawable.rect_black);
-            if( isEmail ) {
-                FirebaseAuth.getInstance().sendPasswordResetEmail(email)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getBaseContext(), getString(R.string.resetMessage), Toast.LENGTH_LONG).show();
-                                    onBackPressed();
-                                } else {
-                                    setBackground(emailField, R.drawable.rect_red);
-                                    Toast.makeText(getBaseContext(), task.getException().getMessage(),Toast.LENGTH_LONG).show();
-                                }
+            Utils.setBackground(emailField, R.drawable.rect_black);
+            FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getBaseContext(), getString(R.string.resetMessage), Toast.LENGTH_LONG).show();
+                                onBackPressed();
+                            } else {
+                                Utils.setBackground(emailField, R.drawable.rect_red);
+                                Toast.makeText(getBaseContext(), task.getException().getMessage(),Toast.LENGTH_LONG).show();
                             }
+                        }
                         });
-            }
         }
 
     }
-    public boolean isValidEmail(CharSequence target) {
-        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
-    }
-
-    private void setBackground(View view, int resource){
-        view.setBackgroundResource(resource);
-    }
-
+    /*
+    * it returns to the main activity (Login activity)
+    * and terminates the reset activity
+    * */
     @Override
     public void onBackPressed() {
         startActivity(new Intent(getBaseContext(), User_Login.class));

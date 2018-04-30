@@ -25,21 +25,28 @@ import java.util.Calendar;
 
 public class Task_ToDo extends Fragment {
 
-    private FirebaseAuth mAuth;
     private DatabaseReference myRef;
     private LinearLayout cont;
     public static String editThis;
 
     public Task_ToDo() { }
+
+    /*
+     * when the fragment is created it calls the database to get all the todo tasks
+     * and it sorts the tasks by start date, the way we show the content is very old,
+     * we create a linear layout, and inflate the task_done layout then add the task details
+     * and show it in the container doneView which in vertical LinearLayout and the parent is
+     * scroll view
+     * setting some listeners using setListeners function ( defined below ) to add functionality to
+     * the buttons ( eye, recycle, pencil )
+     * the result is all todo tasks shown.
+     * */
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.task_todo, container, false);
         cont = view.findViewById(R.id.Todo);
-        if(mAuth == null)
-            mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
         FirebaseDatabase database = Utils.getDatabase();
-        myRef = database.getReference(currentUser.getUid());
+        myRef = database.getReference(Utils.getAuth().getUid());
         (view.findViewById(R.id.addNew) ).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,23 +71,28 @@ public class Task_ToDo extends Fragment {
                             }
                         }
                     }
-
                     @Override
                     public void onCancelled(DatabaseError error) {}
                 });
         view.findViewById(R.id.logOut).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.signOut();
+                Utils.getAuth().signOut();
                 startActivity(new Intent(getActivity(), User_Login.class));
             }
         });
         return view;
     }
+    /*
+    * is called to add new task for lunching the add task activity*/
     private void addNew(){
         startActivity(new Intent(getActivity(), Task_AddTask.class));
     }
 
+    /*
+     * is used to add onClickListener to every component in the view (delete, show and edit)
+     * the parameter is layout ( row )
+     * the result is the listeners set to the buttons*/
     private void setListeners(final LinearLayout layout) {
         final Button delete = layout.findViewById(R.id.delete),
                 edit = layout.findViewById(R.id.edit),

@@ -13,7 +13,7 @@
         android:layout_weight="1">
         <LinearLayout
             android:id="@+id/Todo"
-            android:padding="10dp"
+            android:padding="@dimen/to_do_padding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@drawable/divider"
@@ -32,22 +32,22 @@
 
         <Button
             android:id="@+id/logOut"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/button_padding"
             android:background="@mipmap/_logout"
             />
 
         <Button
             android:id="@+id/addNew"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginRight="@dimen/button_padding"
+            android:layout_marginBottom="@dimen/button_padding"
             android:background="@mipmap/_add" />
     </RelativeLayout>
 </LinearLayout>

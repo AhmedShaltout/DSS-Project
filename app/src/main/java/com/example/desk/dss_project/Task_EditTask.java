@@ -13,9 +13,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/*
+* this activity is called to edit some task by clicking the pencil button from todo fragment
+* it shows all the details of the task but in editable fields
+* */
 public class Task_EditTask extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
     private DatabaseReference myRef;
     private Task task;
     @Override
@@ -24,10 +27,7 @@ public class Task_EditTask extends AppCompatActivity {
         setContentView(R.layout.task_edit);
         String id = Task_ToDo.editThis;
         FirebaseDatabase database = Utils.getDatabase();
-        if(mAuth == null)
-            mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        myRef = database.getReference(currentUser.getUid()).child(id);
+        myRef = database.getReference(Utils.getAuth().getUid()).child(id);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -43,7 +43,11 @@ public class Task_EditTask extends AppCompatActivity {
         });
     }
 
-
+    /*
+    * is called when the user finishes editing the task to save it in the database
+    * the parameter is the clicked view (save button)
+    * the result is the data saved to the database
+    * */
     public void Save(View view){
         final String title = ((EditText)findViewById(R.id.edit_title)).getText().toString(),
                 body = ((EditText)findViewById(R.id.edit_body)).getText().toString(),
@@ -60,6 +64,11 @@ public class Task_EditTask extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    /*
+    * is called to close the activity
+    * the parameter is the view clicked (cancel button)
+    * the result activity is terminated
+    **/
     public void Cancel(View view){
         onBackPressed();
     }

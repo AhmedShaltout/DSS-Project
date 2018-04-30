@@ -19,7 +19,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class User_SignUp extends AppCompatActivity {
-    private FirebaseAuth mAuth;
     CheckBox showPassword;
     EditText emailField, passwordField;
 
@@ -27,8 +26,6 @@ public class User_SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_signup);
-        if(mAuth == null)
-            mAuth = FirebaseAuth.getInstance();
         passwordField = findViewById(R.id.password);
         emailField = findViewById(R.id.email);
         showPassword = findViewById(R.id.showPassword);
@@ -44,21 +41,27 @@ public class User_SignUp extends AppCompatActivity {
         });
     }
 
+    /**
+     * is called to add new account to the database by checking if the email entered is valid
+     * and not for an old user then it inserts it.
+     * the result is the fields color changes if something went wrong
+     * or the user is inserted if the data is ok.
+     * */
     public void newAccount(View view) {
         String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
         int passwordLen = password.length();
-        boolean isEmail = isValidEmail(email);
+        boolean isEmail = Utils.isValidEmail(email);
         if(!isEmail)
-            setBackground(emailField, R.drawable.rect_red);
+            Utils.setBackground(emailField, R.drawable.rect_red);
         else
-            setBackground(emailField, R.drawable.rect_black);
+            Utils.setBackground(emailField, R.drawable.rect_black);
         if(passwordLen == 0)
-            setBackground(passwordField, R.drawable.rect_red);
+            Utils.setBackground(passwordField, R.drawable.rect_red);
         else
-            setBackground(passwordField, R.drawable.rect_black);
+            Utils.setBackground(passwordField, R.drawable.rect_black);
         if(isEmail && passwordLen != 0) {
-            mAuth.createUserWithEmailAndPassword(email, password)
+            Utils.getAuth().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -72,13 +75,10 @@ public class User_SignUp extends AppCompatActivity {
                     });
         }
     }
-    private boolean isValidEmail(CharSequence target) {
-        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
-    }
-    private void setBackground(View view, int resource){
-        view.setBackgroundResource(resource);
-    }
-
+    /*
+     * it returns to the main activity (Login activity)
+     * and terminates the SignUp activity
+     * */
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, User_Login.class));

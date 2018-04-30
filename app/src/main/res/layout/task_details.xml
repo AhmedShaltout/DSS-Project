@@ -10,32 +10,31 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:divider="@drawable/divider"
-        android:padding="20dp"
+        android:padding="@dimen/new_task_padding"
         android:showDividers="middle"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/taskDetails"
-            android:textSize="35sp"
+            android:textSize="@dimen/new_task_title"
             android:gravity="center"
-            android:layout_marginBottom="50dp"
             android:textColor="@color/greeny"
             android:fontFamily="serif-monospace"
             />
         <TextView
             android:id="@+id/title"
-            android:textSize="30sp"
+            android:textSize="@dimen/task_title_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:fontFamily="sans-serif-condensed"
             android:background="@drawable/rect_black"
             android:textColor="@android:color/black"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
+            android:paddingTop="@dimen/task_title_padding"
+            android:paddingBottom="@dimen/task_title_padding"
+            android:paddingRight="@dimen/new_task_padding"
+            android:paddingLeft="@dimen/new_task_padding"
             android:textColorHighlight="@android:color/darker_gray" />
         <TextView
             android:id="@+id/date"
@@ -46,12 +45,12 @@
 
         <TextView
             android:id="@+id/body"
-            android:textSize="25sp"
+            android:textSize="@dimen/task_title_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="serif"
-            android:minHeight="200dp"
-            android:padding="7dp"
+            android:minHeight="@dimen/new_task_details_height"
+            android:padding="@dimen/task_body_padding"
             android:textColor="@android:color/black"
             android:background="@drawable/rect_black" />
 

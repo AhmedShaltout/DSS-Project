@@ -9,7 +9,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     SectionsPagerAdapter(FragmentManager fm) {
         super(fm);
     }
-
+    /*
+    * getItem is invoked when the user swipe the screen left and right it is called.
+    * the parameter is the page ( fragment position ).
+    * return value is the fragment in position ( position ).
+    * */
     @Override
     public Fragment getItem(int position) {
         switch (position) {
@@ -24,11 +28,19 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         }
     }
 
+    /*
+    * getCount is invoked once to prepare the page view in the beginning.
+    * the return value pages count.
+    * */
     @Override
     public int getCount() {
         return 2;
     }
 
+    /*
+    * getPageTitle is invoked to get the names of the fragments included
+    * the parameters is the position of the fragment
+    * the return value is the name of the fragment in the position ( position )*/
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {

@@ -52,6 +52,10 @@ public class Task {
         this.title = title;
     }
 
+    /*
+    * getFullDate is invoked to get the date combined in a format to be shown.
+    * the parameters are the startDate, dueDate and doneDate ( they can be null if not exists ).
+    * the return value is the dates combined together to be shown.*/
     public static String getFullDate(Date startDate, Date dueDate, Date doneDate){
         StringBuilder date =
                 new StringBuilder("Started: "+ DateFormat.format("yyyy-MM-dd hh:mm:ss a", startDate).toString());

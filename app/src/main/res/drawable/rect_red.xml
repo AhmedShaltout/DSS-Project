@@ -3,16 +3,16 @@
     android:shape="rectangle" >
 
     <corners
-        android:radius="10dp" />
+        android:radius="@dimen/rect_radius" />
 
     <padding
-        android:bottom="5dp"
-        android:left="5dp"
-        android:right="5dp"
-        android:top="5dp"/>
+        android:bottom="@dimen/rect_padding"
+        android:left="@dimen/rect_padding"
+        android:right="@dimen/rect_padding"
+        android:top="@dimen/rect_padding"/>
 
     <stroke
-        android:width="2dp"
+        android:width="@dimen/rect_width"
         android:color="@android:color/holo_red_dark" />
 
 </shape>

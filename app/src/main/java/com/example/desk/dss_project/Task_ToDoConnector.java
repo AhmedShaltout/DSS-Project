@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-
+/*
+* this activity is the one witch holds the todo tasks and the done tasks
+* it uses the SectionPagerAdapter to get the details of the fragments included and it shows the
+* first tab which is the todo tasks fragment
+* */
 public class Task_ToDoConnector extends AppCompatActivity{
 
     @Override

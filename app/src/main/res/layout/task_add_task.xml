@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp"
+        android:padding="@dimen/new_task_padding"
         android:divider="@drawable/divider"
         android:showDividers="middle"
         >
@@ -18,9 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/whatTo"
-            android:textSize="30sp"
+            android:textSize="@dimen/new_task_title"
             android:gravity="center"
-            android:layout_marginBottom="50dp"
             android:textColor="@color/greeny"
             android:fontFamily="serif-monospace"
             />
@@ -28,7 +27,7 @@
         <EditText
             android:id="@+id/add_title"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:hint="@string/title"
             android:textAlignment="center"
             android:textColor="@android:color/black"
@@ -44,9 +43,10 @@
         <TextView
             android:id="@+id/dueDate"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:hint="@string/dueDate"
             android:textAlignment="center"
+            android:gravity="center"
             android:drawableRight="@android:drawable/ic_menu_my_calendar"
             android:textColor="@android:color/black"
             android:textColorHint="@android:color/darker_gray"
@@ -59,7 +59,7 @@
             android:id="@+id/add_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="200dp"
+            android:minHeight="@dimen/new_task_details_height"
             android:gravity="top"
             android:ems="10"
             android:hint="@string/body"
@@ -78,7 +78,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/new_task_margin"
                 android:background="@drawable/rect_red"
                 android:textColor="@android:color/holo_red_dark"
                 android:text="@string/cancel"
@@ -88,7 +88,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/new_task_margin"
                 android:background="@drawable/rect_green"
                 android:textColor="@color/greeny"
                 android:text="@string/save"
